@@ -1,8 +1,21 @@
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.CsvSource;
+import ru.netology.stats.BonusSarvice;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BonusSarviceTest {
 
-    @org.junit.jupiter.api.Test
+    @ParameterizedTest(name = "[{index}] {0}" )
+    @CsvSource(
+            value ={
+            "'registered user, bonus under limit', 1000_60, true, 30",
+            "'registered user, bonus over limit', 1_000_000_60, true, 500",
+            "'unregistered user, bonus under limit', 1000_60, false, 10",
+            "'unregistered user, bonus over limit', 1_000_000_60, false, 500"
+
+     }, delimiter = ',')
     void shouldCalculateForRegisterredAndUnderLimit() {
         BonusSarvice service = new BonusSarvice();
 
@@ -18,7 +31,7 @@ class BonusSarviceTest {
 
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void shouldCalculateForNotRegisterredAndUnderLimit() {
         BonusSarvice service = new BonusSarvice();
 
