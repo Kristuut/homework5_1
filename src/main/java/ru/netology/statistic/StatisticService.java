@@ -19,7 +19,6 @@ public class StatisticService {
 
                 max = purchase;
             }
-
         }
 
         return max;
@@ -51,8 +50,5 @@ public class StatisticService {
 
     }
 
-//    public int amountforMore(int[] purchases) {
-//
-//
-//    }
+
 }
